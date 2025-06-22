@@ -24,4 +24,6 @@ Route::get('/adminDashboard',[AdminController::class,'admin'])->name('admin.dash
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
 Route::get('/home',[AdminController::class,'getCourses'])->name('home');
 
+Route::get('/postData',[AdminController::class,'postData'])->name('postData');
+
 require __DIR__.'/auth.php';
