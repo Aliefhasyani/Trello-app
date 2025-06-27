@@ -22,7 +22,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/adminDashboard',[AdminController::class,'admin'])->name('admin.dashboard')->middleware(['auth','role:admin']);
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
-Route::get('/home',[AdminController::class,'getCourses'])->name('home');
+Route::get('/home',[AdminController::class,'getAllCourses'])->name('home');
+
+Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail');
 
 // Route::post('/postData',[AdminController::class,'postData'])->name('postData');
 

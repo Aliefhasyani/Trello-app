@@ -9,20 +9,20 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <ol class="list-unstyled">
-                    @foreach ($courses['courses'] as $value)
+                    @foreach ($course as $value)
                         <li class="mb-4">
                             <div class="card shadow-sm">
                                 <div class="card-body text-center">
-                                    <img src="{{ $value['image'] ?? '' }}" alt="Course Image" width="120" class="mb-3 rounded">
-                                    <h5 class="card-title">{{ $value['name'] ?? 'No name' }}</h5>
+                                    <img src="{{ $value->pic ?? '' }}" alt="Course Image" width="120" class="mb-3 rounded">
+                                    <h5 class="card-title">{{ $value->title ?? 'No name' }}</h5>
                                     <p class="card-text mb-1">
-                                        <strong>Category:</strong> {{ $value['category'] ?? 'N/A' }}
+                                        <strong>Category:</strong> {{ $value->category ?? 'N/A' }}
                                     </p>
                                     <p class="card-text mb-1">
-                                        <strong>Price:</strong> ${{ $value['actual_price_usd'] ?? 'N/A' }} 
-                                        | <strong>Sale:</strong> ${{ $value['sale_price_usd'] ?? 'N/A' }}
+                                        <strong>Price:</strong> ${{ $value->org_price ?? 'N/A' }} 
+                                        | <strong>Sale:</strong> ${{ $value->discount_price ?? 'N/A' }}
                                     </p>
-                                    <a href="{{ $value['url'] ?? '#' }}" target="_blank" class="btn btn-primary mt-2">Go to Course</a>
+                                    <a href="{{ route('courseDetail', ['id' => $value->id]) }}" class="btn btn-primary mt-2">Go to Course</a>
                                 </div>
                             </div>
                         </li>

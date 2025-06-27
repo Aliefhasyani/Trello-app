@@ -10,6 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Admin {$user->name} logged in!") }}
+                    <br>
+                    <br>
+                    <strong>{{ __("Total Users: {$total_users} ") }}</strong>
+                    <br>
+                    <br>
+                    <strong>{{ __("Total Courses: {$total_courses} ") }}</strong>
                 </div>
             </div>
         </div>

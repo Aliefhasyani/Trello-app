@@ -13,7 +13,11 @@ class AdminController extends Controller
     public function admin()
     {   
         $user = Auth::user();
-        return view('admin.adminDashboard',compact('user'));
+
+        $total_users = User::count();
+        $total_courses = Course::count();
+
+        return view('admin.adminDashboard',compact('user','total_users','total_courses'));
     }
 
     public function getCourses(){
@@ -62,6 +66,12 @@ class AdminController extends Controller
         }
 
         return response()->json(['message' => 'Courses imported successfully']);
+    }
+
+    public function getAllCOurses(){
+        $course = Course::all();
+
+        return view('home',compact('course'));
     }
     
 }
