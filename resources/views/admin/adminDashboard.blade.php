@@ -15,6 +15,9 @@
                     <strong>{{ __("Total Users: {$total_users} ") }}</strong>
                     <br>
                     <br>
+                    <strong>{{ __("Total Admin: {$total_admin} ") }}</strong>
+                    <br>
+                    <br>
                     <strong>{{ __("Total Courses: {$total_courses} ") }}</strong>
                 </div>
             </div>

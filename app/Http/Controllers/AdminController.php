@@ -16,8 +16,9 @@ class AdminController extends Controller
 
         $total_users = User::count();
         $total_courses = Course::count();
+        $total_admin = User::where('role','admin')->count();
 
-        return view('admin.adminDashboard',compact('user','total_users','total_courses'));
+        return view('admin.adminDashboard',compact('user','total_users','total_courses','total_admin'));
     }
 
     public function getCourses(){

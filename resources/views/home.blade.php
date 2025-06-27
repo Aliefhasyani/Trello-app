@@ -13,16 +13,12 @@
                         <li class="mb-4">
                             <div class="card shadow-sm">
                                 <div class="card-body text-center">
-                                    <img src="{{ $value->pic ?? '' }}" alt="Course Image" width="120" class="mb-3 rounded">
+                                    <img src="{{ $value->pic ?? '' }}" alt="Course Image" width="120" class="mb-3 rounded mx-auto d-block">
                                     <h5 class="card-title">{{ $value->title ?? 'No name' }}</h5>
                                     <p class="card-text mb-1">
                                         <strong>Category:</strong> {{ $value->category ?? 'N/A' }}
                                     </p>
-                                    <p class="card-text mb-1">
-                                        <strong>Price:</strong> ${{ $value->org_price ?? 'N/A' }} 
-                                        | <strong>Sale:</strong> ${{ $value->discount_price ?? 'N/A' }}
-                                    </p>
-                                    <a href="{{ route('courseDetail', ['id' => $value->id]) }}" class="btn btn-primary mt-2">Go to Course</a>
+                                    <a href="{{ route('courseDetail', ['id' => $value->id]) }}" class="btn btn-primary mt-2">Details</a>
                                 </div>
                             </div>
                         </li>
