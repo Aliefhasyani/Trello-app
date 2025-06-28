@@ -20,4 +20,8 @@ class Course extends Model
     'expiry',
     'savedtime',
 ];
+
+  public function users(){
+    return $this->belongsToMany(User::class,'users_course');
+  }
 }

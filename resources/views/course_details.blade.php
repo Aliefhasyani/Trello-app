@@ -14,10 +14,10 @@
                         <h2 class="card-title mb-2">{{ $selected_course->title }}</h2>
                         <h5 class="text-muted mb-3">{{ $selected_course->category }}</h5>
                         <p class="card-text mb-4">{{ $selected_course->desc_text }}</p>
-                        
-                        <a href="{{ $selected_course->coupon ?? $selected_course->course_url }}" target="_blank" class="btn btn-primary btn-m">
-                            Go to Course
-                        </a>
+                        <form action="{{route('enroll',['course' => $selected_course->id])}}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary btn-sm">Enroll</button>
+                        </form>
                     </div>
                 </div>
             </div>

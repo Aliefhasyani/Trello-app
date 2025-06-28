@@ -16,6 +16,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -25,7 +26,10 @@ Route::get('/studentDashboard',[StudentController::class,'student'])->name('stud
 Route::get('/home',[AdminController::class,'getAllCourses'])->name('home');
 
 Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail');
+Route::post('/courseDetail/{course}/enroll',[StudentController::class,'enroll'])->name('enroll');
 
-// Route::post('/postData',[AdminController::class,'postData'])->name('postData');
+
+
+
 
 require __DIR__.'/auth.php';
