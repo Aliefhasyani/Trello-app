@@ -16,16 +16,24 @@
                         <thead>
                             <tr>
                                 <th class="px-4 py-2 text-left">Course</th>
+                                <th class="px-4 py-2 text-left">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($courses as $value)
                                 <tr class="border-t dark:border-gray-700">
                                     <td class="px-4 py-2">{{ $value->title }}</td>
+                                    <td class="px-4 py-2">
+                                        <form action="{{ route('deEnroll', ['id' => $value->id]) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">Unenroll</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="px-4 py-2 text-gray-500" colspan="1">
+                                    <td class="px-4 py-2 text-gray-500" colspan="2">
                                         You are not enrolled in any courses.
                                     </td>
                                 </tr>

@@ -27,6 +27,7 @@ Route::get('/home',[AdminController::class,'getAllCourses'])->name('home');
 
 Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail');
 Route::post('/courseDetail/{course}/enroll',[StudentController::class,'enroll'])->name('enroll');
+Route::delete('/studentDashboard/remove/{id}',[StudentController::class,'deEnroll'])->name('deEnroll');
 
 
 

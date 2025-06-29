@@ -36,6 +36,14 @@ class StudentController extends Controller
         return redirect('home');
     }
 
+    public function deEnroll(Course $course){
+        $user = Auth::user();
+        
+        $user->courses()->detach($course->id);
+        
+        return redirect()->route('student.dashboard')->with('success', 'You have been unenrolled from the course.');
+}
+
     
 
 }
