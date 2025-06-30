@@ -66,5 +66,10 @@ class AdminController extends Controller
         
         return view('home');
     }
+
+    public function adminPanel(){
+        
+        return view('admin.adminPanel');
+    }
     
 }
