@@ -14,6 +14,8 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/home',[AdminController::class,'home'])->name('home');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   
@@ -23,11 +25,13 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/adminDashboard',[AdminController::class,'admin'])->name('admin.dashboard')->middleware(['auth','role:admin']);
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
-Route::get('/home',[AdminController::class,'getAllCourses'])->name('home');
+Route::get('/course',[AdminController::class,'getAllCourses'])->name('course');
 
-Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail');
-Route::post('/courseDetail/{course}/enroll',[StudentController::class,'enroll'])->name('enroll');
-Route::delete('/studentDashboard/remove/{course}',[StudentController::class,'deEnroll'])->name('deEnroll');
+
+Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail')->middleware(['auth']);
+Route::post('/courseDetail/{course}/enroll',[StudentController::class,'enroll'])->name('enroll')->middleware(['auth']);
+Route::delete('/studentDashboard/remove/{course}',[StudentController::class,'deEnroll'])->name('deEnroll')->middleware(['auth']);
+
 
 
 

@@ -32,7 +32,7 @@ class StudentController extends Controller
 
         $user->courses()->attach($course->id);
 
-        return redirect('home');
+        return redirect()->route('student.dashboard');
     }
 
     public function deEnroll(Course $course){

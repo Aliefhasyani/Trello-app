@@ -59,7 +59,12 @@ class AdminController extends Controller
     public function getAllCOurses(){
         $course = Course::all();
 
-        return view('home',compact('course'));
+        return view('course',compact('course'));
+    }
+
+    public function home(){
+        
+        return view('home');
     }
     
 }
