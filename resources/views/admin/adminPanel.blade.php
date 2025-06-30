@@ -4,4 +4,8 @@
             {{ __('Admin Panel') }}
         </h2>
     </x-slot>
+
+    <a href="{{route('')}}">
+
+
 </x-app-layout>

@@ -71,5 +71,14 @@ class AdminController extends Controller
         
         return view('admin.adminPanel');
     }
+
+
+    public function showUsers(){
+        $users = User::all();
+        $count_users = User::count();
+        $count_admins = User::where('role','admin')->count();
+
+        return view('admin.usersManagement',compact('users','count_users','count_admins'));
+    }
     
 }
