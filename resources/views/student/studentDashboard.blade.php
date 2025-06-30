@@ -24,7 +24,7 @@
                                 <tr class="border-t dark:border-gray-700">
                                     <td class="px-4 py-2">{{ $value->title }}</td>
                                     <td class="px-4 py-2">
-                                        <form action="{{ route('deEnroll', ['id' => $value->id]) }}" method="POST" style="display:inline;">
+                                        <form action="{{ route('deEnroll', ['course' => $value->id]) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger btn-sm" type="submit">Unenroll</button>
@@ -34,7 +34,7 @@
                             @empty
                                 <tr>
                                     <td class="px-4 py-2 text-gray-500" colspan="2">
-                                        You are not enrolled in any courses.
+                                        <strong> You are not enrolled in any courses.</strong>
                                     </td>
                                 </tr>
                             @endforelse

@@ -13,7 +13,6 @@ class StudentController extends Controller
     {   
         $user = Auth::user();
              
-
         $courses = $user->courses;
 
         return view('student.studentDashboard',compact('courses','user'));
@@ -41,8 +40,8 @@ class StudentController extends Controller
         
         $user->courses()->detach($course->id);
         
-        return redirect()->route('student.dashboard')->with('success', 'You have been unenrolled from the course.');
-}
+        return redirect()->route('student.dashboard');
+    }
 
     
 
