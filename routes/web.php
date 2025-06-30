@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/adminDashboard',[AdminController::class,'admin'])->name('admin.dashboard')->middleware(['auth','role:admin']);
 Route::get('/admin/panel',[AdminController::class,'adminPanel'])->name('admin.panel')->middleware(['auth','role:admin']);
 Route::get('/admin/panel/users',[AdminController::class,'showUsers'])->name('admin.users')->middleware(['auth','role:admin']);
+Route::delete('/admin/panel/users/delete/{id}',[AdminController::class,'delete'])->name('admin.delete')->middleware(['auth','role:admin']);
+
+
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
 Route::get('/course',[AdminController::class,'getAllCourses'])->name('course');
 

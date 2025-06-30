@@ -80,5 +80,13 @@ class AdminController extends Controller
 
         return view('admin.usersManagement',compact('users','count_users','count_admins'));
     }
+
+    public function delete($id){
+        $user = User::findOrFail($id);
+
+        $user->delete();
+        
+        return redirect()->route('admin.users');
+    }
     
 }

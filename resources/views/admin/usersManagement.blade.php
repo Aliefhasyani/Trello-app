@@ -18,11 +18,11 @@
                                     <h4 class="mb-4">Admins Registered : {{$count_admins}}</h4>
                                 </strong>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">NAME</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">ROLE</th>
+                                    <th scope="col">ACTION</th>
                                     
                                 </tr>
                             </thead>
@@ -35,8 +35,16 @@
                                     <td>{{$value->role}}</td>
                                     
                                     <td>
-                                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <form action="{{route('admin.delete',['id'=>$value->id])}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            @if($value->role == 'admin')
+                                                <button class="btn btn-danger btn-m" type="submit" disabled>Delete</button>
+                                            @else
+                                                <button class="btn btn-danger btn-m" type="submit">Delete</button>
+                                            @endif
+                                        </form>
+                                      
                                     </td>
                                 </tr>
                                 @endforeach

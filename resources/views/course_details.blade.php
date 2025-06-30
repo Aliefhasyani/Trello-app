@@ -16,7 +16,11 @@
                         <p class="card-text mb-4">{{ $selected_course->desc_text }}</p>
                         <form action="{{route('enroll',['course' => $selected_course->id])}}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-success btn-m">Enroll</button>
+                            @if(Auth::user()->role == 'admin')
+                                <p></p>
+                            @else
+                                <button type="submit" class="btn btn-success btn-m">Enroll</button>
+                            @endif
                         </form>
                     </div>
                 </div>
