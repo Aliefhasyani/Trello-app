@@ -16,15 +16,22 @@
                                 <strong>
                                     <h4 class="mb-4">Users Registered : {{$count_users}}</h4>
                                     <h4 class="mb-4">Admins Registered : {{$count_admins}}</h4>
-                                </strong>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">NAME</th>
-                                    <th scope="col">EMAIL</th>
-                                    <th scope="col">ROLE</th>
-                                    <th scope="col">ACTION</th>
+                                        <button class="btn btn-success btn-m mb-3">
+                                            <a href="{{route('admin.create')}}">
+                                                Add User
+                                            </a>
+                                        </button>
+                                    </strong>
                                     
-                                </tr>
+                                  <tr>
+                                      <th scope="col">ID</th>
+                                      <th scope="col">NAME</th>
+                                      <th scope="col">EMAIL</th>
+                                      <th scope="col">ROLE</th>
+                                      <th scope="col">ACTION</th>
+                                      
+                                  </tr>
+                                        
                             </thead>
                             <tbody>
                                 @foreach($users as $value)

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -86,6 +87,26 @@ class AdminController extends Controller
 
         $user->delete();
         
+        return redirect()->route('admin.users');
+    }
+
+    public function create(){
+        return view('admin.createUser');
+    }
+
+    public function store(Request $request){
+        $user = $request->validate([
+            'name'=>'string|max: 255|required',
+            'email'=>'string|required',
+            'password'=>'string|max: 255|required',
+            'role'=>'in:admin,teacher,student',
+
+        ]);
+
+        $user['password'] = Hash::make($user['password']);
+
+        User::create($user);
+
         return redirect()->route('admin.users');
     }
     

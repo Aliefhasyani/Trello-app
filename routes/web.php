@@ -18,7 +18,6 @@ Route::get('/home',[AdminController::class,'home'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -27,6 +26,8 @@ Route::get('/adminDashboard',[AdminController::class,'admin'])->name('admin.dash
 Route::get('/admin/panel',[AdminController::class,'adminPanel'])->name('admin.panel')->middleware(['auth','role:admin']);
 Route::get('/admin/panel/users',[AdminController::class,'showUsers'])->name('admin.users')->middleware(['auth','role:admin']);
 Route::delete('/admin/panel/users/delete/{id}',[AdminController::class,'delete'])->name('admin.delete')->middleware(['auth','role:admin']);
+Route::get('/admin/panel/users/create',[AdminController::class,'create'])->name('admin.create')->middleware(['auth','role:admin']);
+Route::post('/admin/panel/users/createUser',[AdminController::class,'store'])->name('admin.store')->middleware(['auth','role:admin']);
 
 
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
