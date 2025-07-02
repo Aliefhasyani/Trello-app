@@ -40,19 +40,24 @@
                                     <td>{{$value ->name}}</td>
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->role}}</td>
+                                <td>
+                                    <form action="{{ route('admin.delete', ['id' => $value->id]) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        @if($value->role == 'admin')
+                                            <button class="btn btn-danger btn-m" type="submit" disabled>Delete</button>
+                                        @else
+                                            <button class="btn btn-danger btn-m" type="submit">Delete</button>
+                                        @endif
+                                    </form>
+                                    <a href="{{route('admin.edit')}}" class="btn btn-warning btn-m ms-2" style="display:inline;">Edit</a>
+
+                                </td>
+                                     
+                                            
+                                              
+                                        
                                     
-                                    <td>
-                                        <form action="{{route('admin.delete',['id'=>$value->id])}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            @if($value->role == 'admin')
-                                                <button class="btn btn-danger btn-m" type="submit" disabled>Delete</button>
-                                            @else
-                                                <button class="btn btn-danger btn-m" type="submit">Delete</button>
-                                            @endif
-                                        </form>
-                                      
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

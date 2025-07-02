@@ -109,5 +109,9 @@ class AdminController extends Controller
 
         return redirect()->route('admin.users');
     }
+
+     public function edit(){
+        return view('admin.editUser');
+    }
     
 }

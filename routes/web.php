@@ -28,6 +28,7 @@ Route::get('/admin/panel/users',[AdminController::class,'showUsers'])->name('adm
 Route::delete('/admin/panel/users/delete/{id}',[AdminController::class,'delete'])->name('admin.delete')->middleware(['auth','role:admin']);
 Route::get('/admin/panel/users/create',[AdminController::class,'create'])->name('admin.create')->middleware(['auth','role:admin']);
 Route::post('/admin/panel/users/createUser',[AdminController::class,'store'])->name('admin.store')->middleware(['auth','role:admin']);
+Route::get('/admin/panel/users/editUser',[AdminController::class,'edit'])->name('admin.edit')->middleware(['auth','role:admin']);
 
 
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
