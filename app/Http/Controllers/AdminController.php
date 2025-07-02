@@ -132,5 +132,11 @@ class AdminController extends Controller
 
         return redirect()->route('admin.users');
     }
+
+    public function getCourses(){
+        $courses = Course::all();
+
+        return view('admin.coursesManagement',compact('courses'));
+    }
     
 }

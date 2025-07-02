@@ -35,6 +35,7 @@ Route::post('/admin/panel/users/createUser',[AdminController::class,'store'])->n
 Route::get('/admin/panel/users/editUser/{id}',[AdminController::class,'edit'])->name('admin.edit')->middleware(['auth','role:admin']);
 Route::put('/admin/panel/users/update/{id}',[AdminController::class,'update'])->name('admin.update')->middleware(['auth','role:admin']);
 
+Route::get('/admin/courses',[AdminController::class,'getCourses'])->name('admin.courses')->middleware(['auth','role:admin']);
 
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
 Route::get('/course',[AdminController::class,'getAllCourses'])->name('course');

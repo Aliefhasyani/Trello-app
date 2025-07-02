@@ -37,9 +37,9 @@
                                 @foreach($users as $value)
                                 <tr>
                                     <th scope="row">{{$value ->id}}</th>
-                                    <td>{{$value ->name}}</td>
-                                    <td>{{$value->email}}</td>
-                                    <td>{{$value->role}}</td>
+                                    <td><strong>{{$value ->name}}</strong></td>
+                                    <td><strong>{{$value->email}}</strong></td>
+                                    <td><strong>{{$value->role}}</strong></td>
                                 <td>
                                     <form action="{{ route('admin.delete', ['id' => $value->id]) }}" method="POST" style="display:inline;">
                                         @csrf
