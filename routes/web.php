@@ -24,11 +24,16 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/adminDashboard',[AdminController::class,'admin'])->name('admin.dashboard')->middleware(['auth','role:admin']);
 Route::get('/admin/panel',[AdminController::class,'adminPanel'])->name('admin.panel')->middleware(['auth','role:admin']);
+
+ 
 Route::get('/admin/panel/users',[AdminController::class,'showUsers'])->name('admin.users')->middleware(['auth','role:admin']);
 Route::delete('/admin/panel/users/delete/{id}',[AdminController::class,'delete'])->name('admin.delete')->middleware(['auth','role:admin']);
+
 Route::get('/admin/panel/users/create',[AdminController::class,'create'])->name('admin.create')->middleware(['auth','role:admin']);
 Route::post('/admin/panel/users/createUser',[AdminController::class,'store'])->name('admin.store')->middleware(['auth','role:admin']);
-Route::get('/admin/panel/users/editUser',[AdminController::class,'edit'])->name('admin.edit')->middleware(['auth','role:admin']);
+
+Route::get('/admin/panel/users/editUser/{id}',[AdminController::class,'edit'])->name('admin.edit')->middleware(['auth','role:admin']);
+Route::put('/admin/panel/users/update/{id}',[AdminController::class,'update'])->name('admin.update')->middleware(['auth','role:admin']);
 
 
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
@@ -36,7 +41,9 @@ Route::get('/course',[AdminController::class,'getAllCourses'])->name('course');
 
 
 Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail')->middleware(['auth']);
+
 Route::post('/courseDetail/{course}/enroll',[StudentController::class,'enroll'])->name('enroll')->middleware(['auth']);
+
 Route::delete('/studentDashboard/remove/{course}',[StudentController::class,'deEnroll'])->name('deEnroll')->middleware(['auth']);
 
 

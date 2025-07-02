@@ -50,9 +50,11 @@
                                             <button class="btn btn-danger btn-m" type="submit">Delete</button>
                                         @endif
                                     </form>
-                                    <a href="{{route('admin.edit')}}" class="btn btn-warning btn-m ms-2" style="display:inline;">Edit</a>
 
+                                    <a href="{{route('admin.edit',['id'=>$value->id])}}" method="GET" class="btn btn-warning btn-sm" >Edit</button>
                                 </td>
+                                  
+
                                      
                                             
                                               

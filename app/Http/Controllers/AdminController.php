@@ -110,8 +110,27 @@ class AdminController extends Controller
         return redirect()->route('admin.users');
     }
 
-     public function edit(){
-        return view('admin.editUser');
+    public function edit($id){
+        $user = User::findOrFail($id);
+        return view('admin.editUser',compact('user'));
+    }
+    
+    public function update(Request $request,$id){
+        $user = User::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'string|max:255|required',
+            'email' => 'string|max:255|required',
+            'password' => 'string|max:255|required',
+            'role' => 'in:admin,teacher,student',
+        ]);
+        
+        $user['password'] = Hash::make($user['password']);
+
+        $user->update($data);
+
+
+        return redirect()->route('admin.users');
     }
     
 }
