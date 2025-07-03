@@ -36,6 +36,10 @@ Route::get('/admin/panel/users/editUser/{id}',[AdminController::class,'edit'])->
 Route::put('/admin/panel/users/update/{id}',[AdminController::class,'update'])->name('admin.update')->middleware(['auth','role:admin']);
 
 Route::get('/admin/courses',[AdminController::class,'getCourses'])->name('admin.courses')->middleware(['auth','role:admin']);
+Route::delete('/admin/courses/delete/{id}',[AdminController::class,'deleteCourse'])->name('admin.delete')->middleware(['auth','role:admin']);
+
+Route::get('/admin/courses/create',[AdminController::class,'createCourse'])->name('admin.createCourse')->middleware(['auth','role:admin']);
+Route::post('/admin/courses/createCourse',[AdminController::class,'storeCourse'])->name('admin.storeCourse')->middleware(['auth','role:admin']);
 
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
 Route::get('/course',[AdminController::class,'getAllCourses'])->name('course');

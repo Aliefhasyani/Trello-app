@@ -12,6 +12,7 @@
                     <div class="card-body">
                         <strong><h4 class="mb-4">Edit a  User</h4></strong>
                          <form method="POST" action="{{route('admin.update',['id'=>$user->id])}}">
+                            @method('PUT')
                             @csrf
                             <div class="mb-3">
                                 <strong><label for="name" class="form-label">Username</label></strong>
