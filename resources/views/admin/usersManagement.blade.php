@@ -64,6 +64,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <a href="{{url()->previous()}}" class="btn btn-dark btn-sm" >Previous Page<a>
                     </div>
                 </div>
             </div>

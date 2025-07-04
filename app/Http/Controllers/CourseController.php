@@ -7,5 +7,73 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
+    public function getCourses(){
+        $courses = Course::all();
 
+        return view('admin.coursesManagement',compact('courses'));
+    }
+
+    public function deleteCourse($id){
+        $course = Course::findOrFail($id);
+
+        $course->delete();
+
+        return redirect()->route('admin.courses');
+    }
+    
+    public function createCourse(){
+        return view('admin.createCourse');
+    }
+
+    public function storeCourse(Request $request){
+        $course = $request->validate([
+            'course_url' => 'required|string|max:255|unique:courses,course_url',
+            'title' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'pic' => 'nullable|string|max:255', 
+            'org_price' => 'nullable|numeric|min:0',
+            'discount_price' => 'nullable|numeric|min:0|lte:org_price',
+            'desc_text' => 'nullable|string',
+            'coupon' => 'nullable|string', 
+            'expiry' => 'nullable|date',
+        ]);
+
+        $course['savedtime'] = now();
+        Course::create($course);
+        
+        return redirect()->route('admin.courses');
+    }
+    
+    public function getAllCOurses(){
+        $course = Course::all();
+
+        return view('course',compact('course'));
+    }
+
+    public function edit($id){
+        $course = Course::findOrFail($id);
+
+        return view('admin.editCourse',compact('course'));
+    }
+
+    public function update(Request $request,$id){
+        $course = Course::findOrFail($id);
+
+        $data = $request->validate([
+            'course_url' => 'required|string|max:255|unique:courses,course_url',
+            'title' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'pic' => 'nullable|string|max:255', 
+            'org_price' => 'nullable|numeric|min:0',
+            'discount_price' => 'nullable|numeric|min:0|lte:org_price',
+            'desc_text' => 'nullable|string',
+            'coupon' => 'nullable|string', 
+            'expiry' => 'nullable|date',
+        ]);
+
+        $course->update($data);
+
+        return redirect()->route('admin.courses');
+        
+    }
 }

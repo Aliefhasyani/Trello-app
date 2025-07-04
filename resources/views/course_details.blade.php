@@ -22,6 +22,7 @@
                                 <button type="submit" class="btn btn-success btn-m">Enroll</button>
                             @endif
                         </form>
+                        <a href="{{url()->previous()}}" class="btn btn-dark btn-m mt-3" >Previous Page<a>
                     </div>
                 </div>
             </div>

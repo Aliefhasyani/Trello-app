@@ -26,26 +26,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($courses as $value)
-                                    <tr>
-                                        <th scope="row">{{ $value->id }}</th>
-                                        <td>{{ $value->title }}</td>
-                                        <td>{{ $value->category }}</td>
-                                        <td>${{ $value->org_price }}</td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                <a class="btn btn-warning btn-sm">Edit</a>
-                                                <form action="{{ route('admin.delete', ['id' => $value->id]) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @foreach($courses as $value)
+                                        <tr>
+                                            <th scope="row">{{ $value->id }}</th>
+                                            <td>{{ $value->title }}</td>
+                                            <td>{{ $value->category }}</td>
+                                            <td>${{ $value->org_price }}</td>
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    <a href="{{route('admin.editCourse',['id'=>$value->id]) }}"  class="btn btn-warning btn-sm">Edit</a>
+                                                    
+                                                    <form action="{{ route('admin.delete', ['id' => $value->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                             </tbody>
                         </table>
+                        <a href="{{url()->previous()}}" class="btn btn-dark btn-sm" >Previous Page<a>
                     </div>
                 </div>
             </div> 
