@@ -48,7 +48,7 @@ A Trello-inspired course management system built with Laravel. This application 
 * **Frontend**: Blade + Bootstrap 5
 * **Database**: MySQL
 * **API**: RapidAPI
-* **Authentication**: Laravel Sanctum
+* **User Authentication**: Laravel Breeze
 
 ---
 
@@ -68,14 +68,8 @@ A Trello-inspired course management system built with Laravel. This application 
    npm install
    ```
 
-3. **Copy the `.env` file and configure your environment**
 
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-
-4. **Set up the database**
+3. **Set up the database**
 
    * Create a new MySQL database
    * Update your `.env` file with database credentials
@@ -84,7 +78,7 @@ A Trello-inspired course management system built with Laravel. This application 
    php artisan migrate --seed
    ```
 
-5. **Start the development server**
+4. **Start the development server**
 
    ```bash
    php artisan serve
@@ -139,4 +133,4 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-Let me know if you'd like me to add database schema diagrams, actual screenshots, or `.env` setup tips.
+
