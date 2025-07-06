@@ -1,67 +1,140 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Admin Controls') }}
-        </h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="h4 fw-semibold text-dark mb-0">
+                <i class="bi bi-book me-2"></i> {{ __('Admin Controls') }}
+            </h2>
+        </div>
     </x-slot>
 
-    <div class="container mt-5">
+    <div class="container-fluid py-4">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <strong><h4 class="mb-4">Edit a Course</h4></strong>
-                        <form method="POST" action="{{ route('admin.updateCourse', ['id' => $course->id]) }}">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0 py-3">
+                        <h4 class="mb-0 fw-semibold">
+                            <i class="bi bi-plus-circle me-2"></i> Edit a Course
+                        </h4>
+                    </div>
+                    
+                    <div class="card-body pt-4">
+                        <form method="POST" action="{{ route('admin.updateCourse',$course->id) }}" class="needs-validation" novalidate>
                             @csrf
-                            @method('PUT') 
-
-                            <div class="mb-3">
-                                <strong><label for="course_url" class="form-label">Course URL</label></strong>
-                                <input type="text" class="form-control" id="course_url" name="course_url" placeholder="e.g. laravel-bootcamp-2025" value="{{ old('course_url', $course->course_url) }}" required>
+                            @method('PUT')
+                            
+    
+                            <div class="mb-4">
+                                <label for="course_url" class="form-label fw-medium">Course URL Slug</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-link-45deg"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="course_url" name="course_url" 
+                                           placeholder="laravel-bootcamp-2025" value="{{old('course_url',$course->course_url)}}">
+                                </div>
+                                <div class="form-text">Use lowercase with hyphens (no spaces)</div>
                             </div>
-
-                            <div class="mb-3">
-                                <strong><label for="title" class="form-label">Title</label></strong>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Course title" value="{{ old('title', $course->title) }}" required>
+                            
+          
+                            <div class="mb-4">
+                                <label for="title" class="form-label fw-medium">Course Title</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-card-heading"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="title" name="title" 
+                                           placeholder="Complete Laravel Bootcamp" required value="{{old('title',$course->title)}}">
+                                </div>
                             </div>
-
-                            <div class="mb-3">
-                                <strong><label for="category" class="form-label">Category</label></strong>
-                                <input type="text" class="form-control" id="category" name="category" placeholder="e.g. Web Development" value="{{ old('category', $course->category) }}">
+                            
+            
+                            <div class="mb-4">
+                                <label for="category" class="form-label fw-medium">Category</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-tag"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="category" name="category" 
+                                           placeholder="Web Development" value="{{old('category',$course->category)}}">
+                                </div>
                             </div>
-
-                            <div class="mb-3">
-                                <strong><label for="org_price" class="form-label">Original Price (USD)</label></strong>
-                                <input type="number" class="form-control" id="org_price" name="org_price" step="0.01" placeholder="e.g. 499000" value="{{ old('org_price', $course->org_price) }}">
+                               
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="org_price" class="form-label fw-medium">Original Price ($)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="org_price" name="org_price" 
+                                               step="0.01" placeholder="499.00" min="0" value="{{old('org_price',$course->org_price)}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="discount_price" class="form-label fw-medium">Discount Price ($)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="discount_price" name="discount_price" 
+                                               step="0.01" placeholder="249.00" min="0" value="{{old('discount_price',$course->discount_price)}}">
+                                    </div>
+                                </div>
                             </div>
+                            
+         
+                        <textarea class="form-control" id="desc_text" name="desc_text" rows="4" 
+                            placeholder="Describe what students will learn in this course...">{{ old('desc_text', $course->desc_text) }}
+                        </textarea>
 
-                            <div class="mb-3">
-                                <strong><label for="discount_price" class="form-label">Discount Price (USD)</label></strong>
-                                <input type="number" class="form-control" id="discount_price" name="discount_price" step="0.01" placeholder="e.g. 249000" value="{{ old('discount_price', $course->discount_price) }}">
+                 
+                            <div class="card border-0 bg-light mb-4">
+                                <div class="card-body">
+                                    <h5 class="h6 fw-semibold mb-3">
+                                        <i class="bi bi-percent me-2"></i> Coupon Details (Optional)
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="coupon" class="form-label">Coupon Code</label>
+                                            <input type="text" class="form-control" id="coupon" name="coupon" 
+                                                   placeholder="SUMMER2024" value="{{old('coupon',$course->coupon)}}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="expiry" class="form-label">Expiry Date</label>
+                                            <input type="datetime-local" class="form-control" id="expiry" name="expiry" value="{{old('expiry',$course->expiry   )}}">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="mb-3">
-                                <strong><label for="desc_text" class="form-label">Description</label></strong>
-                                <textarea class="form-control" id="desc_text" name="desc_text" rows="3" placeholder="Describe the course...">{{ old('desc_text', $course->desc_text) }}</textarea>
+                            
+                     
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary py-2">
+                                    <i class="bi bi-save me-2"></i> Edit Course
+                                </button>
                             </div>
-
-                            <div class="mb-3">
-                                <strong><label for="coupon" class="form-label">Coupon Code</label></strong>
-                                <input type="text" class="form-control" id="coupon" name="coupon" placeholder="e.g. NEWYEAR50" value="{{ old('coupon', $course->coupon) }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <strong><label for="expiry" class="form-label">Coupon Expiry</label></strong>
-                                <input type="datetime-local" class="form-control" id="expiry" name="expiry"
-                                    value="{{ old('expiry', $course->expiry ? \Carbon\Carbon::parse($course->expiry)->format('Y-m-d\TH:i') : '') }}">
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100">Update Course</button>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        .card {
+            border-radius: 0.5rem;
+        }
+        .form-control, .form-select, .input-group-text {
+            padding: 0.75rem 1rem;
+        }
+        .input-group-text {
+            background-color: #f8f9fa;
+        }
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+    </style>
+
+  
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </x-app-layout>

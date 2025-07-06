@@ -62,7 +62,7 @@ class AdminController extends Controller
 
     
     public function home() {
-        $popular_courses = Course::Withcount('users')->orderByDesc('users_count')->take(3)->get();
+        $popular_courses = Course::Withcount('users')->orderByDesc('users_count')->limit(3)->get();
 
         return view('home',compact('popular_courses'));
     }
@@ -74,7 +74,7 @@ class AdminController extends Controller
 
 
     public function showUsers(){
-        $users = User::orderBy('role','asc')->get();
+        $users = User::all();
         $count_users = User::count();
         $count_admins = User::where('role','admin')->count();
 
@@ -139,6 +139,8 @@ class AdminController extends Controller
 
         return response()->json($response->json());
     }
+
+
 
     
     

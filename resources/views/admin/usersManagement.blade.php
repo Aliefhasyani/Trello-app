@@ -65,10 +65,19 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <span class="badge 
-                                        {{ $user->role == 'admin' ? 'bg-primary' : 'bg-secondary' }}">
-                                        {{ ucfirst($user->role) }}
-                                    </span>
+                                        @if($user->role =='admin')
+                                            <span class="badge bg-success">
+                                                {{ ($user->role) }}
+                                            </span>
+                                        @elseif($user->role == 'teacher')
+                                            <span class="badge bg-info">
+                                                {{ ($user->role) }}
+                                            </span>
+                                        @else
+                                            <span class="badge bg-primary">
+                                            {{ ($user->role) }}
+                                            </span>
+                                        @endif
                                 </td>
                                 <td class="text-end pe-4">
                                     <div class="d-flex justify-content-end gap-2">

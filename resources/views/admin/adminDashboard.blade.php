@@ -1,9 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="d-flex justify-content-between align-items-center">
-            <h2 class="h4 mb-0 fw-semibold">
-                <i class="bi bi-speedometer2 me-2"></i> Admin Dashboard
-            </h2>
+       
             <div class="text-muted small">
                 Welcome back, {{ $user->name }}
             </div>

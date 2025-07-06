@@ -1,11 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="h4 fw-semibold text-dark mb-0">
-                <i class="bi bi-house-door me-2"></i> {{ __('Home') }}
-            </h2>
-        </div>
-    </x-slot>
+
 
     <div class="container-fluid py-5">
         <div class="row justify-content-center">

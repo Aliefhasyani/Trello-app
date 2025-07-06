@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use \Illuminate\Validation\ValidationException; 
 
 class CourseController extends Controller
 {
@@ -57,24 +58,28 @@ class CourseController extends Controller
         return view('admin.editCourse',compact('course'));
     }
 
-    public function update(Request $request,$id){
-        $course = Course::findOrFail($id);
+ public function update(Request $request, $id)
+{
+    $course = Course::findOrFail($id);
 
+    try {
         $data = $request->validate([
-            'course_url' => 'required|string|max:255|unique:courses,course_url',
+            'course_url' => 'required|string|max:255|unique:courses,course_url,' . $id,
             'title' => 'required|string|max:255',
             'category' => 'nullable|string|max:255',
-            'pic' => 'nullable|string|max:255', 
             'org_price' => 'nullable|numeric|min:0',
             'discount_price' => 'nullable|numeric|min:0|lte:org_price',
             'desc_text' => 'nullable|string',
             'coupon' => 'nullable|string', 
             'expiry' => 'nullable|date',
         ]);
-
-        $course->update($data);
-
-        return redirect()->route('admin.courses');
-        
+    } catch (ValidationException $e) {
+        dd($e->validator->errors()->all());
     }
+
+    $course->update($data);
+    
+    return redirect()->route('admin.courses');
+}
+
 }

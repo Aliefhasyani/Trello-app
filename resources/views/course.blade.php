@@ -1,11 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="h4 fw-semibold mb-0 text-dark">
-                <i class="bi bi-book me-2"></i> {{ __('Courses') }}
-            </h2>
-        </div>
-    </x-slot>
+
 
     <div class="container-fluid py-4">
         <div class="row g-4">
