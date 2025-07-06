@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Models\Course;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
@@ -57,11 +60,11 @@ class AdminController extends Controller
         return response()->json(['message' => 'Courses imported successfully']);
     }
 
-   
+    
+    public function home() {
+        $popular_courses = Course::Withcount('users')->orderByDesc('users_count')->take(3)->get();
 
-    public function home(){
-        
-        return view('home');
+        return view('home',compact('popular_courses'));
     }
 
     public function adminPanel(){
@@ -127,6 +130,14 @@ class AdminController extends Controller
 
 
         return redirect()->route('admin.users');
+    }
+
+    public function manga(){
+        $response = Http::withOptions([
+            'verify' => false,
+        ])->get("https://api.mangadex.org/manga");
+
+        return response()->json($response->json());
     }
 
     

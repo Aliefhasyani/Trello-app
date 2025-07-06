@@ -21,9 +21,8 @@ class StudentController extends Controller
 
 
     public function showDetail($id){
-        $selected_course = Course::findorFail($id);
-        
-        return view('course_details',compact('selected_course'));
+        $selected_course = Course::withCount('users')->findOrFail($id); 
+        return view('course_details', compact('selected_course'));
     }
 
     public function enroll(Course $course){

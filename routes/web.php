@@ -49,12 +49,15 @@ Route::put('/admin/edit/course/{id}/update',[CourseController::class,'update'])-
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
 Route::get('/course',[CourseController::class,'getAllCourses'])->name('course');
 
+Route::get('/manga',[AdminController::class,'manga'])->name('manga');
 
 Route::get('/courseDetail/{id}',[StudentController::class,'showDetail'])->name('courseDetail')->middleware(['auth']);
 
 Route::post('/courseDetail/{course}/enroll',[StudentController::class,'enroll'])->name('enroll')->middleware(['auth']);
 
 Route::delete('/studentDashboard/remove/{course}',[StudentController::class,'deEnroll'])->name('deEnroll')->middleware(['auth']);
+
+
 
 
 

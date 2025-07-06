@@ -44,11 +44,12 @@ class CourseController extends Controller
         return redirect()->route('admin.courses');
     }
     
-    public function getAllCOurses(){
-        $course = Course::all();
-
-        return view('course',compact('course'));
+    public function getAllCourses() {
+        $course = Course::withCount('users')->get(); 
+        
+        return view('course', compact('course'));
     }
+
 
     public function edit($id){
         $course = Course::findOrFail($id);
