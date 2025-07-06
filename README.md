@@ -10,7 +10,8 @@ Here's a cleaned-up and professional version of your README file, with better fo
 
 A Trello-inspired course management system built with Laravel. This application integrates with RapidAPI to fetch course data and supports full CRUD operations with role-based access control.
 
-![App Screenshot](https://via.placeholder.com/800x400?text=Trello-style+Course+Management+App) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/337a7815-a4ed-4a28-a987-9afa88737764)
+
 
 ---
 
