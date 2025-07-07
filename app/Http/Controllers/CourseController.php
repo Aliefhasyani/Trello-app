@@ -58,28 +58,37 @@ class CourseController extends Controller
         return view('admin.editCourse',compact('course'));
     }
 
- public function update(Request $request, $id)
-{
-    $course = Course::findOrFail($id);
+    public function update(Request $request, $id){
+        $course = Course::findOrFail($id);
 
-    try {
-        $data = $request->validate([
-            'course_url' => 'required|string|max:255|unique:courses,course_url,' . $id,
-            'title' => 'required|string|max:255',
-            'category' => 'nullable|string|max:255',
-            'org_price' => 'nullable|numeric|min:0',
-            'discount_price' => 'nullable|numeric|min:0|lte:org_price',
-            'desc_text' => 'nullable|string',
-            'coupon' => 'nullable|string', 
-            'expiry' => 'nullable|date',
-        ]);
-    } catch (ValidationException $e) {
-        dd($e->validator->errors()->all());
+        try {
+            $data = $request->validate([
+                'course_url' => 'required|string|max:255|unique:courses,course_url,' . $id,
+                'title' => 'required|string|max:255',
+                'category' => 'nullable|string|max:255',
+                'org_price' => 'nullable|numeric|min:0',
+                'discount_price' => 'nullable|numeric|min:0|lte:org_price',
+                'desc_text' => 'nullable|string',
+                'coupon' => 'nullable|string', 
+                'expiry' => 'nullable|date',
+            ]);
+        } catch (ValidationException $e) {
+            dd($e->validator->errors()->all());
+        }
+
+        $course->update($data);
+        
+        return redirect()->route('admin.courses');
     }
 
-    $course->update($data);
-    
-    return redirect()->route('admin.courses');
-}
+    public function search(Request $request){
+        $item = $request->search;
+
+        $course = Course::where('title','like','%'.$item.'%')->get();
+
+        return view('course',compact('item','course'));
+    }
+
+
 
 }

@@ -68,8 +68,8 @@ class AdminController extends Controller
     }
 
     public function adminPanel(){
-        
-        return view('admin.adminPanel');
+        $count_users = User::count();
+        return view('admin.adminPanel',compact('count_users'));
     }
 
 

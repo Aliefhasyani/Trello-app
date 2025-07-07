@@ -48,6 +48,8 @@ Route::put('/admin/edit/course/{id}/update',[CourseController::class,'update'])-
 
 Route::get('/studentDashboard',[StudentController::class,'student'])->name('student.dashboard')->middleware(['auth','role:student']);
 Route::get('/course',[CourseController::class,'getAllCourses'])->name('course');
+Route::get('/course/search',[CourseController::class,'search'])->name('course.search');
+
 
 Route::get('/manga',[AdminController::class,'manga'])->name('manga');
 

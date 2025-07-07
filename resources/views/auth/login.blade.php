@@ -21,7 +21,6 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-        
                 <div class="mb-3">
                     <label for="email" class="form-label small">Email address</label>
                     <input id="email" type="email" class="form-control" 
@@ -32,18 +31,21 @@
                     @enderror
                 </div>
 
-         
                 <div class="mb-3">
                     <label for="password" class="form-label small">Password</label>
-                    <input id="password" type="password" 
-                           class="form-control" 
-                           name="password" required autocomplete="current-password">
+                    <div class="input-group">
+                        <input id="password" type="password" 
+                               class="form-control" 
+                               name="password" required autocomplete="current-password">
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                        </button>
+                    </div>
                     @error('password')
                         <div class="text-danger small mt-1">{{ $message }}</div>
                     @enderror
                 </div>
 
-            
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="remember_me" name="remember">
@@ -56,12 +58,9 @@
                     @endif
                 </div>
 
-   
                 <button type="submit" class="btn btn-primary w-100 mb-3">
                     Sign In
                 </button>
-
-               
 
                 @if(Route::has('register'))
                     <div class="text-center mt-4 pt-3 border-top">
@@ -73,4 +72,21 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+            }
+        });
+    </script>
 </x-guest-layout>

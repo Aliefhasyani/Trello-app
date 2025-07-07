@@ -3,6 +3,15 @@
 
     <div class="container-fluid py-4">
         <div class="row g-4">
+            <form action="{{ route('course.search') }}" method="GET" class="mb-4">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search courses..." value="{{ request('search') }}">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </form>
+
             @forelse ($course as $value)
             <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100 hover-scale">
