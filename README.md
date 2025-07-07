@@ -47,7 +47,7 @@ A Trello-inspired course management system built with Laravel. This application 
 
 ## 🧰 Tech Stack
 
-* **Backend**: Laravel 10
+* **Backend**: Laravel 12
 * **Frontend**: Blade + Bootstrap 5
 * **Database**: MySQL
 * **API**: RapidAPI
