@@ -10,7 +10,6 @@
 
 A course management system built with Laravel. This application integrates with RapidAPI to fetch course data and supports full CRUD operations with role-based access control.
 
-![image](https://github.com/user-attachments/assets/337a7815-a4ed-4a28-a987-9afa88737764)
 
 ![image](https://github.com/user-attachments/assets/42d60768-c9f5-41e1-923b-090da202f8a8)
 
