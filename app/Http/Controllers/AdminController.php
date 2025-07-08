@@ -69,7 +69,8 @@ class AdminController extends Controller
 
     public function adminPanel(){
         $count_users = User::count();
-        return view('admin.adminPanel',compact('count_users'));
+        $count_courses = Course::count();
+        return view('admin.adminPanel',compact('count_users','count_courses'));
     }
 
 
@@ -77,8 +78,10 @@ class AdminController extends Controller
         $users = User::all();
         $count_users = User::count();
         $count_admins = User::where('role','admin')->count();
+        $count_students= User::where('role','student')->count();
+        
 
-        return view('admin.usersManagement',compact('users','count_users','count_admins'));
+        return view('admin.usersManagement',compact('users','count_users','count_admins','count_students'));
     }
 
     public function delete($id){
@@ -86,7 +89,8 @@ class AdminController extends Controller
 
         $user->delete();
         
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully.');
+
     }
 
     public function create(){

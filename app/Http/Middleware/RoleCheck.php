@@ -13,9 +13,10 @@ class RoleCheck
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,$role): Response
+    public function handle(Request $request, Closure $next,$roles): Response
     {   
-        if($request->user()->role != $role){
+        $allowedRoles = explode(',',$roles);
+        if(!in_array($request->user()->role,$allowedRoles)){
             return redirect('home');
         }
         return $next($request);

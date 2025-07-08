@@ -29,8 +29,16 @@
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
                             </div>
                         </x-nav-link>
+                        @elseif(Auth::user()->role == 'teacher')
+                        <x-nav-link :href="route('teacher.dashboard')" :active="request()->routeIs('teacher.dashboard')" class="group">
+                            <div class="flex items-center px-3 py-2 transition-all duration-200"> 
+                                <i class="bi bi-speedometer2 mr-2 text-lg group-hover:text-primary-600 dark:group-hover:text-primary-400"></i>
+                                <span>{{ __('Dashboard') }}</span>
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+                            </div>
+                        </x-nav-link>
                         @else
-                        <x-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')" class="group">
+                         <x-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')" class="group">
                             <div class="flex items-center px-3 py-2 transition-all duration-200"> 
                                 <i class="bi bi-speedometer2 mr-2 text-lg group-hover:text-primary-600 dark:group-hover:text-primary-400"></i>
                                 <span>{{ __('Dashboard') }}</span>

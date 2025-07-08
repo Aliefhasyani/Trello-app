@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TeacherController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
@@ -37,11 +38,11 @@ Route::post('/admin/panel/users/createUser',[AdminController::class,'store'])->n
 Route::get('/admin/panel/users/editUser/{id}',[AdminController::class,'edit'])->name('admin.edit')->middleware(['auth','role:admin']);
 Route::put('/admin/panel/users/update/{id}',[AdminController::class,'update'])->name('admin.update')->middleware(['auth','role:admin']);
 
-Route::get('/admin/courses',[CourseController::class,'getCourses'])->name('admin.courses')->middleware(['auth','role:admin']);
-Route::delete('/admin/courses/delete/{id}',[CourseController::class,'deleteCourse'])->name('admin.delete')->middleware(['auth','role:admin']);
+Route::get('/admin/courses',[CourseController::class,'getCourses'])->name('admin.courses');
+Route::delete('/admin/courses/delete/{id}',[CourseController::class,'deleteCourse'])->name('admin.deleteCourse')->middleware(['auth','role:admin']);
 
-Route::get('/admin/courses/create',[CourseController::class,'createCourse'])->name('admin.createCourse')->middleware(['auth','role:admin']);
-Route::post('/admin/courses/createCourse',[CourseController::class,'storeCourse'])->name('admin.storeCourse')->middleware(['auth','role:admin']);
+Route::get('/admin/courses/create',[CourseController::class,'createCourse'])->name('admin.createCourse')->middleware(['auth','role:admin,teacher']);
+Route::post('/admin/courses/createCourse',[CourseController::class,'storeCourse'])->name('admin.storeCourse')->middleware(['auth','role:admin,teacher'  ]);
 
 Route::get('/admin/edit/course/{id}',[CourseController::class,'edit'])->name('admin.editCourse')->middleware(['auth','role:admin']);
 Route::put('/admin/edit/course/{id}/update',[CourseController::class,'update'])->name('admin.updateCourse')->middleware(['auth','role:admin']);
