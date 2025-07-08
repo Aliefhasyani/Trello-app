@@ -86,7 +86,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="display-4 fw-bold mb-4">
-                        Trello <span class="gradient-text">App</span>
+                        Web <span class="gradient-text">App</span>
                     </h1>
                     
                     <p class="lead text-muted mb-5">
