@@ -1,16 +1,15 @@
-Here's a cleaned-up and professional version of your README file, with better formatting, fixed code blocks, clearer instructions, and section consistency:
+
 
 ---
 
-# Trello-style Course Management App
+#  Course Management Web App
 
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge\&logo=laravel\&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge\&logo=bootstrap\&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge\&logo=mysql\&logoColor=white)
 
-A Trello-inspired course management system built with Laravel. This application integrates with RapidAPI to fetch course data and supports full CRUD operations with role-based access control.
+A course management system built with Laravel. This application integrates with RapidAPI to fetch course data and supports full CRUD operations with role-based access control.
 
-![image](https://github.com/user-attachments/assets/337a7815-a4ed-4a28-a987-9afa88737764)
 
 ![image](https://github.com/user-attachments/assets/42d60768-c9f5-41e1-923b-090da202f8a8)
 
@@ -60,8 +59,8 @@ A Trello-inspired course management system built with Laravel. This application 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Aliefhasyani/Trello-app.git
-   cd Trello-app
+   git clone https://github.com/Aliefhasyani/web-app.git
+   cd web-app
    ```
 
 2. **Install dependencies**
@@ -99,41 +98,7 @@ A Trello-inspired course management system built with Laravel. This application 
 
 ---
 
-## 🌐 Key Routes
 
-* Admin Panel: `/admin/dashboard`
-* Course Management: `/courses`
-* Register: `/register`
-* Login: `/login`
 
----
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your feature branch
-
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. Commit your changes
-
-   ```bash
-   git commit -m "Add some AmazingFeature"
-   ```
-4. Push to the branch
-
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
 
 
